@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 import NotesList from './components/NotesList'
 import Header from './components/Header'
+
 import Search from './components/Search'
 
 function App() {
@@ -16,31 +17,19 @@ function App() {
       text: 'This is my second note!',
       date: '25/04/2022',
     },
-    {
-      id: nanoid(),
-      text: 'This is my third note!',
-      date: '11/04/2022',
-    },
-    {
-      id: nanoid(),
-      text: 'This is my new note!',
-      date: '21/04/2022',
-    },
   ])
 
   const [searchText, setSearchText] = useState('')
 
   const [darkMode, setDarkMode] = useState(false)
+  const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
 
   useEffect(() => {
-    const savedNotes = JSON.parse(localStorage.getItem('notes-data'))
-    if (savedNotes) {
-      setNotes(savedNotes)
-    }
+    setNotes(savedNotes)
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('notes-data', JSON.stringify(notes))
+    localStorage.setItem('react-notes-app-data', JSON.stringify(notes))
   }, [notes])
 
   const addNote = (text) => {
@@ -50,7 +39,6 @@ function App() {
       text: text,
       date: date.toLocaleDateString(),
     }
-
     const newNotes = [...notes, newNote]
     setNotes(newNotes)
   }
@@ -63,9 +51,9 @@ function App() {
   return (
     <div className={darkMode ? 'dark-mode' : 'light-mode'}>
       <div className='container'>
-        <Header darkMode={setDarkMode} />
-        <Search handleSearchNote={setSearchText} />
-        <NotesList notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote={addNote} handleDeleteNote={deleteNote} />
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Search darkMode={darkMode} handleSearchNote={setSearchText} />
+        <NotesList setNotes={setNotes} notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))} handleAddNote={addNote} handleDeleteNote={deleteNote} />
       </div>
     </div>
   )
