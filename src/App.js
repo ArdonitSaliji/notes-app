@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { nanoid } from 'nanoid'
 import NotesList from './components/NotesList'
 import Header from './components/Header'
@@ -22,6 +22,15 @@ function App() {
   const [searchText, setSearchText] = useState('')
   const [darkMode, setDarkMode] = useState(true)
   const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
+  const savedMode = localStorage.getItem('darkMode')
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode))
+  }, [darkMode])
+
+  useEffect(() => {
+    savedMode && setDarkMode(JSON.parse(savedMode))
+  }, [])
 
   useEffect(() => {
     setNotes(savedNotes)
