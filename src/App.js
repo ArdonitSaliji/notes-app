@@ -20,8 +20,7 @@ function App() {
   ])
 
   const [searchText, setSearchText] = useState('')
-
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
   const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'))
 
   useEffect(() => {
