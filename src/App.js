@@ -9,31 +9,11 @@ function App() {
   const [notes, setNotes] = useState([
     {
       id: nanoid(),
-      text: 'This is my first note!',
-      date: '4/25/2021',
-    },
-    {
-      id: nanoid(),
-      text: 'This is my second note!',
-      date: '5/15/2022',
-    },
-    {
-      id: nanoid(),
-      text: 'This is my second note!',
-      date: '5/15/2022',
+      text: 'These are my notes, so feel free to type some!',
+      date: '7/15/2022',
     },
   ])
-  // localStorage.setItem(
-  //   'notes-data',
-  //   JSON.stringify([
-  //     ...notes,
-  //     {
-  //       id: nanoid(),
-  //       text: 'This is my first note!',
-  //       date: '6/10/2021',
-  //     },
-  //   ])
-  // )
+
   const [searchText, setSearchText] = useState('')
   const [darkMode, setDarkMode] = useState(true)
   const savedNotes = localStorage.getItem('notes-data')
