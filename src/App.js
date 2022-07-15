@@ -61,6 +61,7 @@ function App() {
           darkMode={darkMode}
           handleSearchNote={setSearchText}
         />
+
         <NotesList
           setNotes={setNotes}
           notes={notes.filter((note) => note.text.toLowerCase().includes(searchText))}

@@ -75,20 +75,63 @@ textarea:focus {
 }
 
 .note {
+  position: relative;
   white-space: pre-wrap;
   min-width: 10rem;
+  word-wrap: break-word;
   height: 13rem;
   width: 15rem;
   background-color: #fef68a;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.8rem 0.8rem 0 1rem;
   float: left;
   min-height: 170px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+.note-text {
+  overflow-x: hidden;
+  height: 80%;
+  padding-right: 5px;
+}
+
+.note-text::-webkit-scrollbar {
+  width: 10px;
+}
+
+.note-text::-webkit-scrollbar-track {
+  background: rgb(179, 177, 177);
+  border-radius: 10px;
+}
+
+.note-text::-webkit-scrollbar-thumb {
+  background: rgb(136, 136, 136);
+  border-radius: 10px;
+}
+
+.note-text::-webkit-scrollbar-thumb:hover {
+  background: rgb(100, 100, 100);
+  border-radius: 10px;
+}
+
+.note-text::-webkit-scrollbar-thumb:active {
+  background: rgb(68, 68, 68);
+  border-radius: 10px;
+}
+/* ::-webkit-scrollbar 
+::-webkit-scrollbar-track 
+::-webkit-scrollbar-thumb  
+
+::-webkit-scrollbar-button 
+::-webkit-scrollbar-track-piece 
+::-webkit-scrollbar-corner */
+
 .note-footer {
+  z-index: 2;
+  bottom: 10px;
+  margin-bottom: 10px;
+  position: sticky;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -145,4 +188,18 @@ textarea:focus {
 }
 .search input:focus {
   outline: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .notes-list {
+    padding: 0 0 30px 0;
+    display: grid;
+    grid-template-columns: 45% 45%;
+  }
+  .note {
+    width: 100%;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-x: hidden;
+  }
 }
