@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive'
 import Note from './Note'
 import AddNote from './AddNote'
 const NotesList = ({ notes, handleAddNote, handleDeleteNote }) => {
-  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' })
   return (
     <div className='notes-list'>
       {isTabletOrMobile && <AddNote handleAddNote={handleAddNote} />}
