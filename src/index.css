@@ -28,7 +28,7 @@ textarea:focus {
 }
 .header {
   display: flex;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -77,7 +77,7 @@ textarea:focus {
 .note {
   position: relative;
   white-space: pre-wrap;
-  min-width: 10rem;
+  min-width: 8rem;
   word-wrap: break-word;
   height: 13rem;
   width: 15rem;
@@ -141,6 +141,7 @@ textarea:focus {
   cursor: pointer;
 }
 .search__container {
+  padding: 0 0.8rem;
   display: flex;
   align-items: center;
   margin-bottom: 1.5rem;
@@ -189,12 +190,16 @@ textarea:focus {
 .search input:focus {
   outline: none;
 }
-
+/* --------------------- Media ---------------------- */
 @media screen and (max-width: 1024px) {
+  .container {
+    padding: 0;
+  }
   .notes-list {
     padding: 0 0 30px 0;
     display: grid;
     grid-template-columns: 45% 45%;
+    justify-content: center;
   }
   .note {
     width: 100%;

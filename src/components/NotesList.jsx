@@ -1,9 +1,12 @@
 import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 import Note from './Note'
 import AddNote from './AddNote'
 const NotesList = ({ notes, handleAddNote, handleDeleteNote }) => {
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
   return (
     <div className='notes-list'>
+      {isTabletOrMobile && <AddNote handleAddNote={handleAddNote} />}
       {notes.map((note, index) => (
         <Note
           handleDeleteNote={handleDeleteNote}
@@ -13,7 +16,7 @@ const NotesList = ({ notes, handleAddNote, handleDeleteNote }) => {
           date={note.date}
         />
       ))}
-      <AddNote handleAddNote={handleAddNote} />
+      {!isTabletOrMobile && <AddNote handleAddNote={handleAddNote} />}
     </div>
   )
 }
